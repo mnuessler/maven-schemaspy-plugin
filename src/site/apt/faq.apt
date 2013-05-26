@@ -27,8 +27,8 @@ FAQs
 
  * The SchemaSpy plugin isn't generating any graphs or diagrams. What's happening, dude?
 
- Make sure you've installed the {{{http://www.graphviz.org/}Graphvis}}) tool, and that it
-is accessible on the system path on your machine. Check to see if you can run the 
+ Make sure you've installed the {{{http://www.graphviz.org/}Graphviz}}) tool, and that it
+is accessible on the system path on your machine. Check to see if you can run the
 "dot -?" command from the command line, as shown here:
 
 +--------------------+
@@ -43,23 +43,23 @@ Usage: dot [-Vv?] [-(GNE)name=val] [-(KTlso)<val>] <dot files>
 ...
 +--------------------+
 
- If not, Graphvis probably isn't installed correctly. 
+ If not, Graphviz probably isn't installed correctly.
 
  * I'm trying to run SchemaSpy against an Oracle (DB2/Informix/Firebird/...) database,
 but it keeps crashing on me.
 
- Most databases with JDBC drivers available in the standard Maven repository should work out-of-the-box. 
- Currently, these are 
+ Most databases with JDBC drivers available in the standard Maven repository should work out-of-the-box.
+ Currently, these are
    * Derby
    * MySQL
    * HSQLDB
    * PostgreSQL
    * MS SQLServer using the JTDS driver (mssql-jtds)
 
- Others, such as DB2, Oracle, MS SQL Server (if using the Microsoft driver) and 
- Firefox, don't have drivers in the repositories. 
+ Others, such as DB2, Oracle, MS SQL Server (if using the Microsoft driver) and
+ Firefox, don't have drivers in the repositories.
 
- In this case,  or if you want to specify a different driver, you need to specify the driver manually 
+ In this case,  or if you want to specify a different driver, you need to specify the driver manually
  using the <<<\<pathToDrivers\>>>> parameter, as shown here:
 
 +-----+
@@ -78,7 +78,7 @@ but it keeps crashing on me.
               <user>scott</user>
               <password>tiger</password>
               <outputDirectory>target/site/schemaSpy-full</outputDirectory>
-              <pathToDrivers>src/test/resources/lib/derby-10.1.2.1.jar</pathToDrivers>     
+              <pathToDrivers>src/test/resources/lib/derby-10.1.2.1.jar</pathToDrivers>
               <commentsInitiallyDisplayed>true</commentsInitiallyDisplayed>
               <noTableComments>true</noTableComments>
               <noImplied>true</noImplied>
@@ -86,24 +86,24 @@ but it keeps crashing on me.
               <cssStylesheet>testSchemaSpy.css</cssStylesheet>
               <schemaDescription>Maven Plugin SchemaSpy Test</schemaDescription>
             </configuration>
-        </plugin> 
+        </plugin>
     </plugins>
   </reporting>
 </project>
 +-----+
 
  For MSSQL Server, the mssql-jtds will use the open source JTDS driver for this database.
-  
+
 
  * SchemaSpy reports are cool, but I don't like the colors. Can I change them?
 
- Sure. Just use the  <<<\<cssStylesheet\>>>> configuration option. The default one 
- is called schemaSpy.css, and can be found bundled in the plugin JAR (in the resources 
+ Sure. Just use the  <<<\<cssStylesheet\>>>> configuration option. The default one
+ is called schemaSpy.css, and can be found bundled in the plugin JAR (in the resources
  directory). You can also check it out online in the Subversion repository.
 
  * The SchemaSpy plugin is logging my database password, so exposing it in Jenkins logs. Can I hide it?
 
- The way to do this is to put the database connection details in a separate file 
+ The way to do this is to put the database connection details in a separate file
  of key=value pairs containing a <<<password=mypassword>>> entry.
  Point to that file with the <<<\<connprops\>>>> option.
 
